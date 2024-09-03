@@ -1,2 +1,2 @@
 # PSDisableAndClearShadowCopyOnC
- https://github.com/mrdatawolf/PSDisableAndClearShadowCopyOnC/raw/main/ClearCShadowCopyAndDisable.ps1
+ [Link to file](https://github.com/mrdatawolf/PSDisableAndClearShadowCopyOnC/raw/main/ClearCShadowCopyAndDisable.ps1)
