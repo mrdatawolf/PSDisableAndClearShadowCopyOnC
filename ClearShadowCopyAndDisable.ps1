@@ -1,3 +1,7 @@
+param (
+    [string]$Drive = "C:"
+)
+
 function Test-ModuleInstallation {
     param (
         [Parameter(Mandatory=$true)]
@@ -16,12 +20,12 @@ function Test-ModuleInstallation {
 
     return $true
 }
+
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    # orginal: Start-Process -FilePath "powershell" -ArgumentList "-File .\coreSetup.ps1" -Verb RunAs
-    # We are not running as administrator, so start a new process with 'RunAs'
     Start-Process powershell.exe "-File", ($myinvocation.MyCommand.Definition) -Verb RunAs
     exit
 }
+
 $modules = @("Microsoft.PowerShell.Management")
 foreach ($module in $modules) {
     $result = Test-ModuleInstallation -ModuleName $module
@@ -31,7 +35,7 @@ foreach ($module in $modules) {
     }
 }
 
-Disable-ComputerRestore -Drive "C:\"
+Disable-ComputerRestore -Drive $Drive
 
 # Get all restore points
 $restorePoints = Get-ComputerRestorePoint
@@ -39,6 +43,7 @@ $restorePoints = Get-ComputerRestorePoint
 # Loop through each restore point and delete it using vssadmin
 foreach ($rp in $restorePoints) {
     $id = $rp.SequenceNumber
-    Start-Process -FilePath "vssadmin.exe" -ArgumentList "delete shadows /for=C: /oldest" -NoNewWindow -Wait
+    Start-Process -FilePath "vssadmin.exe" -ArgumentList "delete shadows /for=$Drive /oldest" -NoNewWindow -Wait
 }
+
 Pause
