@@ -10,6 +10,6 @@ This will run on C Drive:
 This will run on D Drive:
 .\ClearShadowCopyAndDisable.ps1 -Drive "D:"
 
-<!-- Purpose:  -->
+<!-- Purpose:  Runs a set of lower level commands to flush the shadow buildup that can happen-->
 <!-- INSTALL_COMMAND: curl -o ClearShadowCopyAndDisable.ps1 https://github.com/mrdatawolf/PSDisableAndClearShadowCopyOnC/raw/main/ClearShadowCopyAndDisable.ps1 -->
 <!-- RUN_COMMAND: ClearShadowCopyAndDisable.ps1 -->
