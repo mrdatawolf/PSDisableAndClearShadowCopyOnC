@@ -7,9 +7,9 @@ Make sure you run this in a powershell console. I have only tested this in PS 7+
 
 ## Two ways to run
 This will run on C Drive:
-.\YourScriptName.ps1
+.\ClearShadowCopyAndDisable.ps1
 
 
 This will run on D Drive:
-.\YourScriptName.ps1 -Drive "D:"
+.\ClearShadowCopyAndDisable.ps1 -Drive "D:"
 
